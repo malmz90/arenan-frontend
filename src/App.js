@@ -1,21 +1,24 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import LoginPage from './pages/Login'
 
 function App() {
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    fetch('http://localhost:4000/api')
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-  }, [])
-  console.log(data)
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>{!data ? 'Loading...' : data}</p>
-      </header>
-    </div>
+    <Router>
+      <div className="flex">
+        <main className="flex-1">
+          <div className="py-4">
+            <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8"></div>
+            <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
+              <Routes>
+                <Route path="login" element={<LoginPage />} />
+              </Routes>
+            </div>
+          </div>
+        </main>
+      </div>
+    </Router>
   )
 }
 export default App
