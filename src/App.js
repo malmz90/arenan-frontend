@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginPage from './pages/Login'
+import ProtectedTest from './pages/ProtectedTest'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8"></div>
             <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
               <Routes>
+                <Route path="protected" element={<ProtectedTest />} />
                 <Route path="login" element={<LoginPage />} />
               </Routes>
             </div>
