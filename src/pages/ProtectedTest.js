@@ -1,9 +1,11 @@
 import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const ProtectedTest = () => {
   const user = useSelector((state) => state.user.user)
-  console.log(user)
+  const [auth, setAuth] = useState(false)
+  console.log(auth)
+
   useEffect(() => {
     fetch('http://localhost:4000/protected', {
       method: 'POST',
@@ -13,10 +15,12 @@ const ProtectedTest = () => {
       credentials: 'include',
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => (data.succes ? setAuth(true) : setAuth(false)))
       .catch((e) => console.log('error', e))
   })
 
-  return <div>You made it</div>
+  return (
+    <div>{auth ? <div>Authenticated</div> : <div>Not Authenticated</div>}</div>
+  )
 }
 export default ProtectedTest

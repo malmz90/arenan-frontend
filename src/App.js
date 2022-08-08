@@ -3,6 +3,7 @@ import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginPage from './pages/Login'
 import ProtectedTest from './pages/ProtectedTest'
+import CreateGladiator from './pages/CreateGladiator'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
               <Routes>
                 <Route path="protected" element={<ProtectedTest />} />
                 <Route path="login" element={<LoginPage />} />
+                <Route path="gladiator" element={<CreateGladiator />} />
               </Routes>
             </div>
           </div>
