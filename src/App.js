@@ -14,6 +14,7 @@ function App() {
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8"></div>
             <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
               <Routes>
+                <Route path="/" element={<LoginPage />} />
                 <Route path="protected" element={<ProtectedTest />} />
                 <Route path="login" element={<LoginPage />} />
                 <Route path="gladiator" element={<CreateGladiator />} />

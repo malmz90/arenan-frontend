@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 const ProtectedTest = () => {
   const user = useSelector((state) => state.user.user)
   const [auth, setAuth] = useState(false)
-  console.log(auth)
+  console.log('user', user)
 
   useEffect(() => {
     fetch('http://localhost:4000/protected', {
@@ -12,6 +12,7 @@ const ProtectedTest = () => {
       headers: {
         'Content-Type': 'application/json',
       },
+
       credentials: 'include',
     })
       .then((res) => res.json())

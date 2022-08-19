@@ -16,6 +16,7 @@ const LoginPage = () => {
       if (!token) {
         return
       }
+      console.log('handle', user)
       if (user) {
         dispatch(setUser(user))
         navigate('/protected')
