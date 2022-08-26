@@ -1,13 +1,13 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const newUser = { email, password }
-
+  const navigate = useNavigate()
   const handleRegister = (e) => {
     e.preventDefault()
-    console.log(newUser)
     fetch('http://localhost:4000/register', {
       method: 'POST',
       headers: {
@@ -17,8 +17,9 @@ const Register = () => {
       body: JSON.stringify(newUser),
     })
       .then((res) => res.json())
-
+      .then((data) => console.log(data))
       .catch((e) => console.log('error', e))
+    navigate('/login')
   }
   return (
     <div className="flex bg-white py-8 px-4 sm:px-10 w-full justify-center">
