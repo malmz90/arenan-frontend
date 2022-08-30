@@ -4,6 +4,7 @@ import LoginPage from './pages/Login'
 import ProtectedTest from './pages/ProtectedTest'
 import CreateGladiator from './pages/CreateGladiator'
 import Register from './pages/Register'
+import MainPage from './pages/MainPage'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8"></div>
             <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
               <Routes>
+                <Route path="main" element={<MainPage />} />
                 <Route path="/" element={<LoginPage />} />
                 <Route path="protected" element={<ProtectedTest />} />
                 <Route path="login" element={<LoginPage />} />
