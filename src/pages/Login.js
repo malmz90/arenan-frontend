@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setUser } from '../redux/reducers/user'
+import { setGladiator } from '../redux/reducers/gladiator'
 
 const LoginPage = () => {
-  const gladiator = useSelector((state) => state.gladiator.gladiator)
   const dispatch = useDispatch()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -14,16 +14,16 @@ const LoginPage = () => {
   const handleLogin = (e) => {
     e.preventDefault()
 
-    const handleData = ({ token, user }) => {
+    const handleData = ({ token, user, gladiator }) => {
       if (!token) {
         return
       }
-      console.log(gladiator)
       if (user && !gladiator) {
         dispatch(setUser(user))
         navigate('/create/gladiator')
       } else if (user && gladiator) {
         console.log(user)
+        dispatch(setGladiator(gladiator))
         dispatch(setUser(user))
         navigate('/main')
       }

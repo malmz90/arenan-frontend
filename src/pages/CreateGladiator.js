@@ -4,10 +4,9 @@ import { setGladiator } from '../redux/reducers/gladiator'
 import { useSelector } from 'react-redux'
 
 const CreateGladiator = () => {
-  const gladiator = useSelector((state) => state.gladiator.gladiator)
   const [newGladiator, setNewGladiator] = useState({})
   const dispatch = useDispatch()
-  console.log(gladiator)
+
   const saveGladiator = (e) => {
     e.preventDefault()
     fetch('http://localhost:4000/gladiator', {
