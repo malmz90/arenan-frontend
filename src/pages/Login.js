@@ -20,7 +20,7 @@ const LoginPage = () => {
       console.log('handle', user)
       if (user) {
         dispatch(setUser(user))
-        navigate('/protected')
+        navigate('create/gladiator')
       }
     }
 

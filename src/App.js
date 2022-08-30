@@ -17,7 +17,7 @@ function App() {
                 <Route path="/" element={<LoginPage />} />
                 <Route path="protected" element={<ProtectedTest />} />
                 <Route path="login" element={<LoginPage />} />
-                <Route path="gladiator" element={<CreateGladiator />} />
+                <Route path="create/gladiator" element={<CreateGladiator />} />
                 <Route path="register" element={<Register />} />
               </Routes>
             </div>

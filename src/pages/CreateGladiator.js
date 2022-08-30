@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { setGladiator } from '../redux/reducers/gladiator'
+import { useSelector } from 'react-redux'
 
 const CreateGladiator = () => {
+  const gladiator = useSelector((state) => state.gladiator.gladiator)
   const [newGladiator, setNewGladiator] = useState({})
-  console.log(newGladiator)
-
-  const saveGladiator = () => {
+  const dispatch = useDispatch()
+  console.log(gladiator)
+  const saveGladiator = (e) => {
+    e.preventDefault()
     fetch('http://localhost:4000/gladiator', {
       method: 'POST',
       headers: {
@@ -14,7 +19,7 @@ const CreateGladiator = () => {
       body: JSON.stringify(newGladiator),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => dispatch(setGladiator(data)))
       .catch((e) => console.log('error', e))
   }
 
