@@ -16,7 +16,7 @@ const Header = () => {
   }
 
   return (
-    <ul class="flex flex-row justify-between">
+    <ul class="flex flex-row justify-between mb-2">
       <div className="flex flex-row">
         <li class="mr-6">
           <a class="text-blue-500 hover:text-blue-800" href="#">
