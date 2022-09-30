@@ -5,7 +5,7 @@ const Header = () => {
   const user = useSelector((state) => state.user.user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  console.log('header', user)
+
   const logout = () => {
     fetch('http://localhost:4000/logout', {
       method: 'GET',

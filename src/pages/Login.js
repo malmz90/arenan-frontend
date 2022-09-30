@@ -22,7 +22,6 @@ const LoginPage = () => {
         dispatch(setUser(user))
         navigate('/create/gladiator')
       } else if (user && gladiator) {
-        console.log(user)
         dispatch(setGladiator(gladiator))
         dispatch(setUser(user))
         navigate('/main')

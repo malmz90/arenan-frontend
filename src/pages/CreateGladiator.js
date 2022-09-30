@@ -2,10 +2,26 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setGladiator } from '../redux/reducers/gladiator'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const CreateGladiator = () => {
-  const [newGladiator, setNewGladiator] = useState({})
+  const [newGladiator, setNewGladiator] = useState({
+    name: '',
+    strength: 0,
+    race: '',
+    agility: 0,
+    health: 0,
+  })
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleData = (gladiator) => {
+    if (!gladiator) {
+      return
+    }
+    dispatch(setGladiator(gladiator))
+    navigate('/main')
+  }
 
   const saveGladiator = (e) => {
     e.preventDefault()
@@ -18,21 +34,21 @@ const CreateGladiator = () => {
       body: JSON.stringify(newGladiator),
     })
       .then((res) => res.json())
-      .then((data) => dispatch(setGladiator(data)))
+      .then((data) => handleData(data))
       .catch((e) => console.log('error', e))
   }
 
   return (
     <div>
-      <label>Strength</label>
+      <label>Name</label>
       <input
         type="text"
         className="mt-1 mb-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
-        placeholder="0"
+        placeholder="..."
         onChange={(input) => {
-          setNewGladiator({ ...newGladiator, strength: input.target.value })
+          setNewGladiator({ ...newGladiator, name: input.target.value })
         }}
-        value={newGladiator.strength}
+        value={newGladiator.name}
       />
       <label>Race</label>
       <input
@@ -44,6 +60,17 @@ const CreateGladiator = () => {
         }}
         value={newGladiator.race}
       />
+      <label>Strength</label>
+      <input
+        type="text"
+        className="mt-1 mb-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
+        placeholder="0"
+        onChange={(input) => {
+          setNewGladiator({ ...newGladiator, strength: input.target.value })
+        }}
+        value={newGladiator.strength}
+      />
+
       <label>Agility</label>
       <input
         type="text"

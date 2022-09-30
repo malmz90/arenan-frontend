@@ -6,8 +6,16 @@ import CreateGladiator from './pages/CreateGladiator'
 import Register from './pages/Register'
 import MainPage from './pages/MainPage'
 import Header from './components/Header'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { setUser } from './redux/reducers/user'
+import Merchants from './components/Merchants'
 
 function App() {
+  const user = useSelector((state) => state.user.user)
+  const dispatch = useDispatch()
+  console.log(user)
+
   return (
     <Router>
       <div className="flex">
@@ -22,6 +30,7 @@ function App() {
                 <Route path="login" element={<LoginPage />} />
                 <Route path="create/gladiator" element={<CreateGladiator />} />
                 <Route path="register" element={<Register />} />
+                <Route path="main/merchants" element={<Merchants />}></Route>
               </Routes>
             </div>
           </div>

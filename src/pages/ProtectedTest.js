@@ -7,7 +7,7 @@ const ProtectedTest = () => {
   console.log('user', user)
 
   useEffect(() => {
-    fetch('http://localhost:4000/protected', {
+    fetch('http://localhost:4000/verifyAuth', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
