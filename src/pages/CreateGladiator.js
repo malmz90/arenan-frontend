@@ -12,9 +12,10 @@ const CreateGladiator = () => {
     agility: 0,
     health: 0,
   })
+  const gladiator = useSelector((state) => state.gladiator.gladiator)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  console.log('glad', gladiator)
   const handleData = (gladiator) => {
     if (!gladiator) {
       return
@@ -38,7 +39,9 @@ const CreateGladiator = () => {
       .catch((e) => console.log('error', e))
   }
 
-  return (
+  return gladiator ? (
+    <div>A gladiator already exists</div>
+  ) : (
     <div>
       <label>Name</label>
       <input

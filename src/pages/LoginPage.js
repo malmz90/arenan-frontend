@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../redux/reducers/user'
 import { setGladiator } from '../redux/reducers/gladiator'
@@ -24,7 +24,7 @@ const LoginPage = () => {
       } else if (user && gladiator) {
         dispatch(setGladiator(gladiator))
         dispatch(setUser(user))
-        navigate('/main')
+        navigate('/')
       }
     }
 
@@ -44,9 +44,6 @@ const LoginPage = () => {
   return (
     <>
       <div className="flex flex-row w-full justify-center">
-        <div className="px-8">
-          <h1>Välkommen till Arenan</h1>
-        </div>
         <div className="bg-white py-8 px-4 sm:px-10">
           <form
             onSubmit={handleLogin}
@@ -121,12 +118,14 @@ const LoginPage = () => {
               </button>
             </div>
             <div>
-              <button
-                type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-400 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-gray"
-              >
-                Create new account
-              </button>
+              <Link to="/register">
+                <button
+                  type="submit"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-400 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-gray"
+                >
+                  Create new account
+                </button>
+              </Link>
             </div>
           </form>
         </div>
