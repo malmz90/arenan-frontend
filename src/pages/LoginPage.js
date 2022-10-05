@@ -15,6 +15,7 @@ const LoginPage = () => {
     e.preventDefault()
 
     const handleData = ({ token, user, gladiator }) => {
+      console.log('log', gladiator)
       if (!token) {
         return
       }
@@ -24,7 +25,7 @@ const LoginPage = () => {
       } else if (user && gladiator) {
         dispatch(setGladiator(gladiator))
         dispatch(setUser(user))
-        navigate('/')
+        navigate('/main')
       }
     }
 

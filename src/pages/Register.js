@@ -19,7 +19,7 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((e) => console.log('error', e))
-    navigate('/login')
+    navigate('/')
   }
   return (
     <div className="flex bg-white py-8 px-4 sm:px-10 w-full justify-center">

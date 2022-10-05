@@ -1,3 +1,4 @@
 export const SET_USER = 'SET_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const SET_GLADIATOR = 'SET_GLADIATOR'
+export const REMOVE_GLADIATOR = 'REMOVE_GLADIATOR'

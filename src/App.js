@@ -20,8 +20,7 @@ import RightSidebar from './components/RightSidebar'
 
 function App() {
   const user = useSelector((state) => state.user.user)
-
-  console.log(user)
+  const gladiator = useSelector((state) => state.gladiator.gladiator)
 
   return (
     <Router>
@@ -38,20 +37,19 @@ function App() {
                     <LeftSidebar />
                   </div>
                   <div className="w-2/4 text-center">
-                    hej
-                    {/* <Routes>
-                    <Route path="/" element={<LoginPage />} />
-                    <Route path="register" element={<Register />} />
-                    <Route path="/" element={<MainPage />} />
-                    <Route
-                      path="create/gladiator"
-                      element={<CreateGladiator />}
-                    />
-                    <Route
-                      path="main/merchants"
-                      element={<Merchants />}
-                    ></Route>
-                  </Routes> */}
+                    <Routes>
+                      <Route path="/" element={<LoginPage />} />
+                      <Route path="register" element={<Register />} />
+                      <Route path="main" element={<MainPage />} />
+                      <Route
+                        path="create/gladiator"
+                        element={<CreateGladiator />}
+                      />
+                      <Route
+                        path="main/merchants"
+                        element={<Merchants />}
+                      ></Route>
+                    </Routes>
                   </div>
                   <div className="w-1/4 border-2">
                     <RightSidebar />
