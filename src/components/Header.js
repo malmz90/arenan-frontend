@@ -7,7 +7,7 @@ const Header = () => {
   const dispatch = useDispatch()
 
   return (
-    <div className="border-2 flex justify-center">
+    <div className="border-2 flex justify-center mb-4">
       <h1 className="">Arenan</h1>
     </div>
   )

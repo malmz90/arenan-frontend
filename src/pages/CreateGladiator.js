@@ -15,7 +15,7 @@ const CreateGladiator = () => {
   const gladiator = useSelector((state) => state.gladiator.gladiator)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  console.log('glad', gladiator)
+  console.log(newGladiator)
   const handleData = (gladiator) => {
     if (!gladiator) {
       return
@@ -42,31 +42,48 @@ const CreateGladiator = () => {
   return gladiator ? (
     <div>A gladiator already exists</div>
   ) : (
-    <div>
-      <label>Name</label>
-      <input
-        type="text"
-        className="mt-1 mb-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
-        placeholder="..."
-        onChange={(input) => {
-          setNewGladiator({ ...newGladiator, name: input.target.value })
-        }}
-        value={newGladiator.name}
-      />
-      <label>Race</label>
-      <input
-        type="text"
-        className="mt-1 mb-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
-        placeholder="..."
-        onChange={(input) => {
-          setNewGladiator({ ...newGladiator, race: input.target.value })
-        }}
-        value={newGladiator.race}
-      />
+    <div className="px-4 flex flex-col">
+      <div className="mb-8">
+        <h1 className="text-xl font-bold text-gray-800">Create gladiator</h1>
+        <p className="text-sm text-gray-600">
+          Welcome to the arena and god luck !
+        </p>
+      </div>
+      <div className="mb-8">
+        <div className="mb-2 border-b-2 text-lg text-gray-800 font-bold">
+          1. Name
+        </div>
+        <div className="text-gray-600">Choose a name for your gladiator</div>
+        <input
+          type="text"
+          className=" px-2 mt-1shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
+          onChange={(input) => {
+            setNewGladiator({ ...newGladiator, name: input.target.value })
+          }}
+          value={newGladiator.name}
+        />
+      </div>
+      <div>
+        <div className="mb-2 border-b-2 text-lg text-gray-800 font-bold">
+          2. Race
+        </div>
+        <select
+          className="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
+          value={newGladiator.race}
+          onChange={(e) =>
+            setNewGladiator({ ...newGladiator, race: e.target.value })
+          }
+        >
+          <option>Dwarf</option>
+          <option>Elf</option>
+          <option>Human</option>
+          <option>Ork</option>
+        </select>
+      </div>
       <label>Strength</label>
       <input
         type="text"
-        className="mt-1 mb-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
+        className="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
         placeholder="0"
         onChange={(input) => {
           setNewGladiator({ ...newGladiator, strength: input.target.value })
@@ -77,7 +94,7 @@ const CreateGladiator = () => {
       <label>Agility</label>
       <input
         type="text"
-        className="mt-1 mb-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
+        className="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
         placeholder="0"
         onChange={(input) => {
           setNewGladiator({ ...newGladiator, agility: input.target.value })
@@ -87,7 +104,7 @@ const CreateGladiator = () => {
       <label>Health</label>
       <input
         type="text"
-        className="mt-1 mb-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
+        className="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
         placeholder="0"
         onChange={(input) => {
           setNewGladiator({ ...newGladiator, health: input.target.value })
