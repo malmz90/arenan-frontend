@@ -36,11 +36,12 @@ function App() {
                   <div className="w-1/4 border-2 ">
                     <LeftSidebar />
                   </div>
-                  <div className="w-2/4 text-center">
+                  <div className="w-2/4">
                     <Routes>
                       <Route path="/" element={<LoginPage />} />
                       <Route path="register" element={<Register />} />
                       <Route path="main" element={<MainPage />} />
+                      <Route path="merchants" element={<Merchants />} />
                       <Route
                         path="create/gladiator"
                         element={<CreateGladiator />}
