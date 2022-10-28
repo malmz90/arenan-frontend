@@ -5,9 +5,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const CreateGladiator = () => {
-	const [newGladiator, setNewGladiator] = useState({
+	const initialValues = {
 		name: '',
-
 		race: 'Dwarf',
 		gender: 'Male',
 		strength: 0,
@@ -22,7 +21,8 @@ const CreateGladiator = () => {
 		chain: 0,
 		initiative: 0,
 		dodge: 0,
-	});
+	};
+	const [newGladiator, setNewGladiator] = useState(initialValues);
 	const gladiator = useSelector((state) => state.gladiator.gladiator);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
