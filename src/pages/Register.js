@@ -1,26 +1,26 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const newUser = { email, password }
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const newUser = { email, password };
+  const navigate = useNavigate();
   const handleRegister = (e) => {
-    e.preventDefault()
-    fetch('http://localhost:4000/register', {
-      method: 'POST',
+    e.preventDefault();
+    fetch("http://localhost:4000/auth/register", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      credentials: 'include',
+      credentials: "include",
       body: JSON.stringify(newUser),
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
-      .catch((e) => console.log('error', e))
-    navigate('/')
-  }
+      .catch((e) => console.log("error", e));
+    navigate("/");
+  };
   return (
     <div className="flex bg-white py-8 px-4 sm:px-10 w-full justify-center">
       <form
@@ -97,6 +97,6 @@ const Register = () => {
         </div>
       </form>
     </div>
-  )
-}
-export default Register
+  );
+};
+export default Register;

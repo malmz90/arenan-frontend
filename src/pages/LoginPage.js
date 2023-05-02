@@ -1,46 +1,46 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { setUser } from '../redux/reducers/user'
-import { setGladiator } from '../redux/reducers/gladiator'
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/reducers/user";
+import { setGladiator } from "../redux/reducers/gladiator";
 
 const LoginPage = () => {
-  const dispatch = useDispatch()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const loginUser = { email, password }
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const loginUser = { email, password };
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const handleData = ({ token, user, gladiator }) => {
-      console.log('log', gladiator)
+      console.log("log", gladiator);
       if (!token) {
-        return
+        return;
       }
       if (user && !gladiator) {
-        dispatch(setUser(user))
-        navigate('/create/gladiator')
+        dispatch(setUser(user));
+        navigate("/create/gladiator");
       } else if (user && gladiator) {
-        dispatch(setGladiator(gladiator))
-        dispatch(setUser(user))
-        navigate('/main')
+        dispatch(setGladiator(gladiator));
+        dispatch(setUser(user));
+        navigate("/main");
       }
-    }
+    };
 
-    fetch('http://localhost:4000/login', {
-      method: 'POST',
+    fetch("http://localhost:4000/auth/login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      credentials: 'include',
+      credentials: "include",
       body: JSON.stringify(loginUser),
     })
       .then((res) => res.json())
       .then((data) => handleData(data))
-      .catch((e) => console.log('error', e))
-  }
+      .catch((e) => console.log("error", e));
+  };
 
   return (
     <>
@@ -132,6 +132,6 @@ const LoginPage = () => {
         </div>
       </div>
     </>
-  )
-}
-export default LoginPage
+  );
+};
+export default LoginPage;
