@@ -146,7 +146,8 @@ const CreateGladiator = () => {
             <div className="mr-10">
               <label>Strength</label>
               <input
-                type="text"
+                type="number"
+                min="0"
                 className="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
                 placeholder="0"
                 onChange={(input) => {
@@ -160,7 +161,8 @@ const CreateGladiator = () => {
 
               <label>Dexterity</label>
               <input
-                type="text"
+                type="number"
+                min="0"
                 className="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
                 placeholder="0"
                 onChange={(input) => {
@@ -173,7 +175,8 @@ const CreateGladiator = () => {
               />
               <label>vitality</label>
               <input
-                type="text"
+                type="number"
+                min="0"
                 className="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
                 placeholder="0"
                 onChange={(input) => {
