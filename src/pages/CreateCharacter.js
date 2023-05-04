@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setGladiator } from "../redux/reducers/gladiator";
+import { setCharacter } from "../redux/reducers/character";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const CreateGladiator = () => {
+const CreateCharacter = () => {
   const classIdMap = {
     Barbarian: 1,
     Wizard: 2,
@@ -20,27 +20,28 @@ const CreateGladiator = () => {
     vitality: 0,
   };
 
-  const [newGladiator, setNewGladiator] = useState(initialValues);
-  const gladiator = useSelector((state) => state.gladiator.gladiator);
+  const [newCharacter, setNewCharacter] = useState(initialValues);
+  const character = useSelector((state) => state.character.character);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleData = (gladiator) => {
-    if (!gladiator) {
+
+  const handleData = (character) => {
+    if (!character) {
       return;
     }
-    // dispatch(setGladiator(gladiator));
+    dispatch(setCharacter(character));
     navigate("/main");
   };
 
   const handleChange = (event) => {
-    setNewGladiator({
-      ...newGladiator,
+    setNewCharacter({
+      ...newCharacter,
       gender: event.target.value,
     });
   };
 
-  const saveGladiator = (e) => {
-    console.log("new", newGladiator);
+  const saveCharacter = (e) => {
+    console.log("new", newCharacter);
     e.preventDefault();
     fetch("http://localhost:4000/character/create", {
       method: "POST",
@@ -48,7 +49,7 @@ const CreateGladiator = () => {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify(newGladiator),
+      body: JSON.stringify(newCharacter),
     })
       .then((res) => res.json())
       .then((data) => handleData(data))
@@ -64,11 +65,11 @@ const CreateGladiator = () => {
       {children}
     </div>
   );
-  console.log(gladiator);
-  return gladiator ? (
-    <div>A gladiator already exists</div>
+  console.log(character);
+  return character ? (
+    <div>A character already exists</div>
   ) : (
-    <div className="bg-gray-900 text-gray-200 px-4 flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-900 text-gray-200 px-4">
       <div className="mb-8">
         <h1 className="text-xl font-bold text-gray-100">Create Character</h1>
         <p className="text-sm text-gray-400">
@@ -80,24 +81,24 @@ const CreateGladiator = () => {
         <div className="">Choose a name for your character</div>
         <input
           type="text"
-          className=" px-2 mt-1shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
+          className="w-full max-w-xs px-2 mt-1shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
           onChange={(input) => {
-            setNewGladiator({
-              ...newGladiator,
+            setNewCharacter({
+              ...newCharacter,
               name: input.target.value,
             });
           }}
-          value={newGladiator.name}
+          value={newCharacter.name}
         />
       </div>
       <div className="mb-8">
-        <SectionTitle>2. Race</SectionTitle>
+        <SectionTitle>2. Class</SectionTitle>
         <select
           className="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
-          value={newGladiator.class_id}
+          value={newCharacter.class_id}
           onChange={(e) =>
-            setNewGladiator({
-              ...newGladiator,
+            setNewCharacter({
+              ...newCharacter,
               class_id: classIdMap[e.target.value],
             })
           }
@@ -148,44 +149,44 @@ const CreateGladiator = () => {
               <input
                 type="number"
                 min="0"
-                className="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
+                className="w-full max-w-xs px-2 mt-1shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
                 placeholder="0"
                 onChange={(input) => {
-                  setNewGladiator({
-                    ...newGladiator,
+                  setNewCharacter({
+                    ...newCharacter,
                     strength: input.target.value,
                   });
                 }}
-                value={newGladiator.strength}
+                value={newCharacter.strength}
               />
 
               <label>Dexterity</label>
               <input
                 type="number"
                 min="0"
-                className="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
+                className="w-full max-w-xs px-2 mt-1shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
                 placeholder="0"
                 onChange={(input) => {
-                  setNewGladiator({
-                    ...newGladiator,
+                  setNewCharacter({
+                    ...newCharacter,
                     dexterity: input.target.value,
                   });
                 }}
-                value={newGladiator.dexterity}
+                value={newCharacter.dexterity}
               />
               <label>vitality</label>
               <input
                 type="number"
                 min="0"
-                className="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
+                className="w-full max-w-xs px-2 mt-1shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block border-gray-300 rounded-md mb-2 text-sm font-medium text-gray-900"
                 placeholder="0"
                 onChange={(input) => {
-                  setNewGladiator({
-                    ...newGladiator,
+                  setNewCharacter({
+                    ...newCharacter,
                     vitality: input.target.value,
                   });
                 }}
-                value={newGladiator.vitality}
+                value={newCharacter.vitality}
               />
             </div>
           </div>
@@ -194,11 +195,11 @@ const CreateGladiator = () => {
 
       <button
         className="inline-flex items-center px-3 py-2 border border-red-500 shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 ml-2"
-        onClick={saveGladiator}
+        onClick={saveCharacter}
       >
-        Save gladiator
+        Save character
       </button>
     </div>
   );
 };
-export default CreateGladiator;
+export default CreateCharacter;

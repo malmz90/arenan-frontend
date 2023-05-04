@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/reducers/user";
-import { setGladiator } from "../redux/reducers/gladiator";
+import { setCharacter } from "../redux/reducers/character";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -14,15 +14,15 @@ const LoginPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const handleData = ({ token, user, gladiator }) => {
+    const handleData = ({ token, user, character }) => {
       if (!token) {
         return;
       }
-      if (user && !gladiator) {
+      if (user && !character) {
         dispatch(setUser(user));
-        navigate("/create/gladiator");
-      } else if (user && gladiator) {
-        dispatch(setGladiator(gladiator));
+        navigate("/create/character");
+      } else if (user && character) {
+        dispatch(setCharacter(character));
         dispatch(setUser(user));
         navigate("/main");
       }

@@ -1,27 +1,27 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, Link } from 'react-router-dom'
-import { removeGladiator } from '../redux/reducers/gladiator'
-import { removeUser } from '../redux/reducers/user'
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
+import { removeCharacter } from "../redux/reducers/character";
+import { removeUser } from "../redux/reducers/user";
 
 export default function LeftSidebar() {
-  const user = useSelector((state) => state.user.user)
-  const gladiator = useSelector((state) => state.gladiator.gladiator)
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const user = useSelector((state) => state.user.user);
+  const character = useSelector((state) => state.character.character);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const logout = () => {
-    fetch('http://localhost:4000/logout', {
-      method: 'GET',
-      credentials: 'include',
-    })
-    navigate('/')
-    dispatch(removeUser())
-    dispatch(removeGladiator())
-  }
+    fetch("http://localhost:4000/logout", {
+      method: "GET",
+      credentials: "include",
+    });
+    navigate("/");
+    dispatch(removeUser());
+    dispatch(removeCharacter());
+  };
 
   return (
     <div>
-      {user && gladiator && (
+      {user && character && (
         <ul className="flex flex-col">
           <li className="flex">
             <Link to="/merchants">
@@ -51,5 +51,5 @@ export default function LeftSidebar() {
         </ul>
       )}
     </div>
-  )
+  );
 }
