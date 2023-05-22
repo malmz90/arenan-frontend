@@ -20,34 +20,45 @@ export default function LeftSidebar() {
   };
 
   return (
-    <div>
+    <div className="bg-gray-900 text-white sm:w-64 w-full h-screen space-y-6 py-7 px-2 absolute sm:relative bg-gray-800 shadow overflow-auto">
       {user && character && (
-        <ul className="flex flex-col">
-          <li className="flex">
+        <ul className="space-y-2">
+          {/* Character Image and Health */}
+          <li className="flex flex-col items-center">
+            <img
+              src="public\logo192.png"
+              className="w-32 h-32 object-cover rounded-full"
+            />
+            <p className="text-sm font-medium mt-2">
+              Health: {character.current_health}/{character.max_health}
+            </p>
+          </li>
+
+          {/* Navigation Links */}
+          <li>
             <Link to="/merchants">
-              <a
-                className="flex font-bold items-center px-2 py-1 m-4 text-sm text-gray-700 text-ellipsis rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
-                href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="dark"
-              >
+              <a className="flex font-bold items-center px-2 py-1 m-4 text-sm text-gray-200 rounded hover:text-gray-300 hover:bg-gray-700 transition duration-300 ease-in-out">
                 Market
               </a>
             </Link>
           </li>
+          <li>
+            <Link to="/equipment">
+              <a className="flex font-bold items-center px-2 py-1 m-4 text-sm text-gray-200 rounded hover:text-gray-300 hover:bg-gray-700 transition duration-300 ease-in-out">
+                Equipment
+              </a>
+            </Link>
+          </li>
 
-          <div className="justify-end">
-            {user && (
-              <li>
-                <button
-                  onClick={logout}
-                  className="text-xs font-medium text-gray-500 group-hover:text-gray-200"
-                >
-                  Logout
-                </button>
-              </li>
-            )}
-          </div>
+          {/* Logout Button */}
+          <li className="mt-auto">
+            <button
+              onClick={logout}
+              className="w-full text-xs font-medium text-gray-200 hover:text-white py-2 px-4 rounded transition duration-300 ease-in-out"
+            >
+              Logout
+            </button>
+          </li>
         </ul>
       )}
     </div>

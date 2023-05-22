@@ -7,8 +7,8 @@ const MainPage = () => {
 
   return (
     <div className="flex flex-row">
-      Main
       <LeftSidebar />
+      Main
     </div>
   );
 };

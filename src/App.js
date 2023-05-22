@@ -4,10 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import CreateCharacter from "./pages/CreateCharacter";
 import Register from "./pages/Register";
 import MainPage from "./pages/MainPage";
-import Header from "./components/Header";
 import Merchants from "./components/Merchants";
-import LeftSidebar from "./components/LeftSidebar";
-import RightSidebar from "./components/RightSidebar";
 
 function App() {
   return (
