@@ -18,13 +18,21 @@ const LoginPage = () => {
       if (!token) {
         return;
       }
+      console.log("Full login response data:", { token, user, character });
+      console.log("User:", user);
+      console.log("Character:", character);
       if (user && !character) {
         dispatch(setUser(user));
         navigate("/create/character");
-      } else if (user && character) {
+      } else if (user && character && character.id) {
+        // Only set character if it has meaningful data (like an id)
         dispatch(setCharacter(character));
         dispatch(setUser(user));
         navigate("/main");
+      } else if (user) {
+        // User exists but no valid character, go to create character
+        dispatch(setUser(user));
+        navigate("/create/character");
       }
     };
 
@@ -37,7 +45,9 @@ const LoginPage = () => {
       body: JSON.stringify(loginUser),
     })
       .then((res) => res.json())
+
       .then((data) => handleData(data))
+
       .catch((e) => console.log("error", e));
   };
 

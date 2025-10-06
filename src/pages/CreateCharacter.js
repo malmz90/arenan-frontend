@@ -65,8 +65,15 @@ const CreateCharacter = () => {
       {children}
     </div>
   );
-  console.log(character);
-  return character ? (
+
+  // Check if character exists and has meaningful data (not just an empty object)
+  const hasValidCharacter =
+    character &&
+    typeof character === "object" &&
+    Object.keys(character).length > 0 &&
+    character.id; // Assuming character should have an id
+
+  return hasValidCharacter ? (
     <div>A character already exists</div>
   ) : (
     <div className="min-h-screen flex flex-col bg-gray-900 text-gray-200 px-4">
