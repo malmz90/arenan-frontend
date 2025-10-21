@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/reducers/user";
-import { setCharacter } from "../redux/reducers/character";
+import { setCharacter, removeCharacter } from "../redux/reducers/character";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -21,16 +21,15 @@ const LoginPage = () => {
       console.log("Full login response data:", { token, user, character });
       console.log("User:", user);
       console.log("Character:", character);
-      if (user && !character) {
-        dispatch(setUser(user));
-        navigate("/create/character");
-      } else if (user && character && character.id) {
+
+      if (user && character && character.id) {
         // Only set character if it has meaningful data (like an id)
         dispatch(setCharacter(character));
         dispatch(setUser(user));
         navigate("/main");
       } else if (user) {
-        // User exists but no valid character, go to create character
+        // User exists but no valid character, clear any old character and go to create
+        dispatch(removeCharacter()); // Clear any persisted character from previous session
         dispatch(setUser(user));
         navigate("/create/character");
       }

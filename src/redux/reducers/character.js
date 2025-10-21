@@ -10,7 +10,7 @@ export const removeCharacter = () => ({
 });
 
 const initialState = {
-  user: null,
+  character: null,
 };
 
 const character = (state = initialState, action) => {
