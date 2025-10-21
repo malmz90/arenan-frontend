@@ -36,6 +36,13 @@ export default function LeftSidebar() {
 
           {/* Navigation Links */}
           <li>
+            <Link to="/arena">
+              <a className="flex font-bold items-center px-2 py-1 m-4 text-sm text-gray-200 rounded hover:text-gray-300 hover:bg-gray-700 transition duration-300 ease-in-out">
+                ⚔️ Arena
+              </a>
+            </Link>
+          </li>
+          <li>
             <Link to="/merchants">
               <a className="flex font-bold items-center px-2 py-1 m-4 text-sm text-gray-200 rounded hover:text-gray-300 hover:bg-gray-700 transition duration-300 ease-in-out">
                 Market

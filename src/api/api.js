@@ -15,3 +15,23 @@ export const buyItem = (item) =>
 
     body: JSON.stringify(item),
   });
+
+// Combat API functions
+export const getAllCharacters = () =>
+  fetch("http://localhost:4000/character/all", {
+    credentials: "include",
+  })
+    .then((res) => res.json())
+    .catch((error) => console.log("error", error));
+
+export const startFight = (opponentCharacterId) =>
+  fetch("http://localhost:4000/combat/fight", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify({ opponentCharacterId }),
+  })
+    .then((res) => res.json())
+    .catch((error) => console.log("error", error));
