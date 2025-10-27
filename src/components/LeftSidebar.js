@@ -32,6 +32,9 @@ export default function LeftSidebar() {
             <p className="text-sm font-medium mt-2">
               Health: {character.current_health}/{character.max_health}
             </p>
+            <p className="text-sm font-medium mt-1">
+              Rounds: {character.current_rounds}/{character.max_rounds}
+            </p>
           </li>
 
           {/* Navigation Links */}

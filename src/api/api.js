@@ -35,3 +35,11 @@ export const startFight = (opponentCharacterId) =>
   })
     .then((res) => res.json())
     .catch((error) => console.log("error", error));
+
+// Fetch current character stats (includes rounds)
+export const getMyStats = () =>
+  fetch("http://localhost:4000/character/stats", {
+    credentials: "include",
+  })
+    .then((res) => res.json())
+    .catch((error) => console.log("error", error));

@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import LeftSidebar from "../components/LeftSidebar";
 import CombatLog from "../components/CombatLog";
-import { getAllCharacters, startFight } from "../api/api";
+import { getAllCharacters, startFight, getMyStats } from "../api/api";
+import { useDispatch } from "react-redux";
+import { setCharacter } from "../redux/reducers/character";
 
 const Arena = () => {
   const character = useSelector((state) => state.character.character);
+  const dispatch = useDispatch();
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [combatResult, setCombatResult] = useState(null);
@@ -45,9 +48,23 @@ const Arena = () => {
     }
   };
 
-  const closeCombatLog = () => {
+  const closeCombatLog = async () => {
     setCombatResult(null);
-    // Optionally reload character stats here if you want to show updated stats
+    // Reload character stats to refresh rounds after combat
+    try {
+      const data = await getMyStats();
+      if (data && data.character) {
+        // Merge the few identity fields we show in Arena with the latest rounds
+        dispatch(
+          setCharacter({
+            ...character,
+            ...data.character,
+          })
+        );
+      }
+    } catch (e) {
+      console.error("Failed to refresh character stats", e);
+    }
   };
 
   return (
