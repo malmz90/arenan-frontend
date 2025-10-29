@@ -43,3 +43,15 @@ export const getMyStats = () =>
   })
     .then((res) => res.json())
     .catch((error) => console.log("error", error));
+
+export const allocateStats = ({ strength, vitality, dexterity }) =>
+  fetch("http://localhost:4000/character/allocate-stats", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify({ strength, vitality, dexterity }),
+  })
+    .then((res) => res.json())
+    .catch((error) => console.log("error", error));

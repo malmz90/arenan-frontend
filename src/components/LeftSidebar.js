@@ -35,6 +35,18 @@ export default function LeftSidebar() {
             <p className="text-sm font-medium mt-1">
               Rounds: {character.current_rounds}/{character.max_rounds}
             </p>
+            {character.next_level_experience !== undefined && (
+              <p className="text-sm font-medium mt-1">
+                XP: {character.experience}/{character.next_level_experience}
+              </p>
+            )}
+            {character.unspent_stat_points > 0 && (
+              <Link to="/main">
+                <a className="mt-2 inline-block text-xs font-bold text-yellow-300 bg-yellow-800/50 px-3 py-1 rounded hover:bg-yellow-700/60 transition">
+                  ⭐ Level Up! {character.unspent_stat_points} pts
+                </a>
+              </Link>
+            )}
           </li>
 
           {/* Navigation Links */}
